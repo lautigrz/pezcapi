@@ -8,7 +8,12 @@ const TABLE = process.env.TABLE_NAME || 'fish';
 
 const json = (statusCode: number, body: unknown): APIGatewayProxyResult => ({
     statusCode,
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+        'Access-Control-Allow-Methods': 'OPTIONS,GET',
+    },
     body: JSON.stringify(body),
 });
 
